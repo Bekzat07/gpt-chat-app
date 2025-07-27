@@ -1,5 +1,7 @@
+import { Routes } from "react-router-dom";
+
 const AppRoutes = () => {
-  return <div></div>;
+  return <Routes></Routes>;
 };
 
 export default AppRoutes;
