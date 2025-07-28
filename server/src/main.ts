@@ -6,15 +6,19 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const configService = app.get(ConfigService);
 
+  const port = configService.get<number>('PORT') || 3000;
+  const corsOrigin = configService.get<string>('CORS_ORIGIN') || '*';
+
   app.setGlobalPrefix('api/v1');
 
   app.enableCors({
-    origin: configService.get<string>('CORS_ORIGIN') || '*',
+    origin: corsOrigin.split(','),
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
     preflightContinue: false,
     optionsSuccessStatus: 204,
   });
-  await app.listen(3000);
+
+  await app.listen(port);
 }
 bootstrap();
