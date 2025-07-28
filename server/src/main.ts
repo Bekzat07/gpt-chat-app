@@ -10,7 +10,7 @@ async function bootstrap() {
   const corsOrigin = configService.get<string>('CORS_ORIGIN') || '*';
 
   app.setGlobalPrefix('api/v1');
-
+  console.log('corsOrigin.split(', ')', corsOrigin.split(','));
   app.enableCors({
     origin: corsOrigin.split(','),
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',

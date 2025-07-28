@@ -257,7 +257,7 @@ const ChatPage = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
-            disabled={isLoading}
+            disabled={isLoading || isListening}
             size={isMobile ? "small" : "medium"}
           />
           <IconButton
@@ -271,7 +271,7 @@ const ChatPage = () => {
           <IconButton
             onClick={handleSend}
             color="primary"
-            disabled={isLoading}
+            disabled={isLoading || isListening}
             size="large"
           >
             {isLoading ? <CircularProgress size={24} /> : <SendIcon />}
